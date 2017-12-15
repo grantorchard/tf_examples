@@ -12,10 +12,16 @@ data "vsphere_resource_pool" "this" {
 data "vsphere_host" "this" {
   count = "${length(var.hosts)}"
   name  = "${var.hosts[count.index]}"
+  datacenter_id = "${data.vsphere_datacenter.this.id}"
 }
 
 data "vsphere_datastore" "this" {
   count = "${length(var.datastores)}"
   name  = "${var.datastores[count.index]}"
+  datacenter_id = "${data.vsphere_datacenter.this.id}"
+}
+
+data "vsphere_distributed_virtual_switch" "this" {
+  name          = "RegionA01-vDS-COMP"
   datacenter_id = "${data.vsphere_datacenter.this.id}"
 }
