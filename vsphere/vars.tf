@@ -17,3 +17,13 @@ variable datastores {
     type = "list"
     default = []
 }
+
+variable port_groups {
+    type = "list"
+    default = []
+}
+
+variable vms {
+    type = "list"
+    default = []
+}
